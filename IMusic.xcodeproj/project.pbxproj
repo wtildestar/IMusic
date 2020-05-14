@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		01013B209D1DE5D93CC82895 /* Pods_IMusic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC4AD71FD6075BCF05F1AFB2 /* Pods_IMusic.framework */; };
 		D76AF804246C84D600CFCB0F /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76AF803246C84D600CFCB0F /* Search.swift */; };
+		D76AF80A246D353000CFCB0F /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76AF809246D353000CFCB0F /* NetworkService.swift */; };
 		D7AD3673246BD03800F64AFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AD3672246BD03800F64AFE /* AppDelegate.swift */; };
 		D7AD3675246BD03800F64AFE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AD3674246BD03800F64AFE /* SceneDelegate.swift */; };
 		D7AD367C246BD03B00F64AFE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7AD367B246BD03B00F64AFE /* Assets.xcassets */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		0DEED531C60C065F48D0E3B9 /* Pods-IMusic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IMusic.release.xcconfig"; path = "Target Support Files/Pods-IMusic/Pods-IMusic.release.xcconfig"; sourceTree = "<group>"; };
 		D76AF803246C84D600CFCB0F /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
+		D76AF809246D353000CFCB0F /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		D7AD366F246BD03800F64AFE /* IMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7AD3672246BD03800F64AFE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D7AD3674246BD03800F64AFE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -95,6 +97,14 @@
 			path = "Supporting files";
 			sourceTree = "<group>";
 		};
+		D76AF808246D347100CFCB0F /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				D76AF809246D353000CFCB0F /* NetworkService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		D7AD3666246BD03800F64AFE = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +126,7 @@
 		D7AD3671246BD03800F64AFE /* IMusic */ = {
 			isa = PBXGroup;
 			children = (
+				D76AF808246D347100CFCB0F /* Services */,
 				D76AF806246C84E000CFCB0F /* Controllers */,
 				D76AF805246C84DA00CFCB0F /* Models */,
 				D76AF807246C84F400CFCB0F /* Supporting files */,
@@ -245,6 +256,7 @@
 				D76AF804246C84D600CFCB0F /* Search.swift in Sources */,
 				D7AD3687246BD0A300F64AFE /* MainTabBarController.swift in Sources */,
 				D7AD3675246BD03800F64AFE /* SceneDelegate.swift in Sources */,
+				D76AF80A246D353000CFCB0F /* NetworkService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
