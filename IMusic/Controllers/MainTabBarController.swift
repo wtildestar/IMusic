@@ -11,9 +11,11 @@ import UIKit
 final class MainTabBarController: UITabBarController {
   override func viewDidLoad() {
     super.viewDidLoad()
-    tabBar.tintColor = #colorLiteral(red: 1, green: 0, blue: 0.3764705882, alpha: 1)
+    tabBar.tintColor = UIColor(red: 255/255, green: 0/255, blue: 96/255, alpha: 1.0)
+    let searchViewController: SearchViewController = SearchViewController.loadFromStoryboard()
+    
     viewControllers = [
-      generateViewController(rootViewController: SearchViewController(), image: UIImage(named: "search")!, title: "Search"),
+      generateViewController(rootViewController: searchViewController, image: UIImage(named: "search")!, title: "Search"),
       generateViewController(rootViewController: ViewController(), image: UIImage(named: "library")!, title: "Library")
     ]
   }
