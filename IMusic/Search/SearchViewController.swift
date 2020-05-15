@@ -18,8 +18,10 @@ class SearchViewController: UIViewController, SearchDisplayLogic {
   var interactor: SearchBusinessLogic?
   var router: (NSObjectProtocol & SearchRoutingLogic)?
   let searchController = UISearchController(searchResultsController: nil)
-  private var searchViewModel = SearchViewModel.init(cells: [])
-  private var timer: Timer?
+  private(set) var searchViewModel = SearchViewModel.init(cells: [])
+  private(set) var timer: Timer?
+  
+  private(set) lazy var footerView = FooterView()
   
   // MARK: - Outlets
   @IBOutlet weak var table: UITableView!
@@ -62,16 +64,18 @@ class SearchViewController: UIViewController, SearchDisplayLogic {
     table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     let nib = UINib(nibName: "TrackCell", bundle: nil)
     table.register(nib, forCellReuseIdentifier: TrackCell.reuseId)
+    table.tableFooterView = footerView
   }
   
   func displayData(viewModel: Search.Model.ViewModel.ViewModelData) {
     switch viewModel {
-    case .some:
-      print("viewController .some")
     case .displayTracks(let searchViewModel):
       print("viewController .displayTracks")
       self.searchViewModel = searchViewModel
       table.reloadData()
+      footerView.hideLoader()
+    case .displayFooterView:
+      footerView.showLoader()
     }
   }
 }
@@ -92,6 +96,18 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return 84
+  }
+  
+  func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    let label = UILabel()
+    label.text = "Enter song in search bar above🔝"
+    label.textAlignment = .center
+    label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+    return label
+  }
+  
+  func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    return searchViewModel.cells.count > 0 ? 0 : 250
   }
 }
 

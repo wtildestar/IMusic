@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		01013B209D1DE5D93CC82895 /* Pods_IMusic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC4AD71FD6075BCF05F1AFB2 /* Pods_IMusic.framework */; };
+		D71E05B9246E7D9A00C62EBB /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71E05B8246E7D9A00C62EBB /* FooterView.swift */; };
 		D76AF804246C84D600CFCB0F /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76AF803246C84D600CFCB0F /* SearchResponse.swift */; };
 		D76AF80A246D353000CFCB0F /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76AF809246D353000CFCB0F /* NetworkService.swift */; };
 		D7AD3673246BD03800F64AFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AD3672246BD03800F64AFE /* AppDelegate.swift */; };
@@ -33,6 +34,7 @@
 
 /* Begin PBXFileReference section */
 		0DEED531C60C065F48D0E3B9 /* Pods-IMusic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IMusic.release.xcconfig"; path = "Target Support Files/Pods-IMusic/Pods-IMusic.release.xcconfig"; sourceTree = "<group>"; };
+		D71E05B8246E7D9A00C62EBB /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
 		D76AF803246C84D600CFCB0F /* SearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponse.swift; sourceTree = "<group>"; };
 		D76AF809246D353000CFCB0F /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		D7AD366F246BD03800F64AFE /* IMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -87,6 +89,14 @@
 				DC4AD71FD6075BCF05F1AFB2 /* Pods_IMusic.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D71E05B7246E7D8E00C62EBB /* FooterView */ = {
+			isa = PBXGroup;
+			children = (
+				D71E05B8246E7D9A00C62EBB /* FooterView.swift */,
+			);
+			path = FooterView;
 			sourceTree = "<group>";
 		};
 		D76AF805246C84DA00CFCB0F /* Models */ = {
@@ -162,6 +172,7 @@
 		D7F3E4AF246D5467002BB64B /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				D71E05B7246E7D8E00C62EBB /* FooterView */,
 				D7F3E4D1246DE6EA002BB64B /* Cell */,
 				D7F3E4C6246D6B1E002BB64B /* SearchViewController.xib */,
 				D7F3E4BE246D69DC002BB64B /* SearchViewController.storyboard */,
@@ -315,6 +326,7 @@
 				D7AD3673246BD03800F64AFE /* AppDelegate.swift in Sources */,
 				D7F3E4CC246D6B1E002BB64B /* SearchInteractor.swift in Sources */,
 				D76AF804246C84D600CFCB0F /* SearchResponse.swift in Sources */,
+				D71E05B9246E7D9A00C62EBB /* FooterView.swift in Sources */,
 				D7F3E4D5246DE80C002BB64B /* TrackCell.swift in Sources */,
 				D7AD3687246BD0A300F64AFE /* MainTabBarController.swift in Sources */,
 				D7F3E4C8246D6B1E002BB64B /* SearchWorker.swift in Sources */,
