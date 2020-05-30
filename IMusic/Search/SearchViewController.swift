@@ -40,10 +40,6 @@ class SearchViewController: UIViewController, SearchDisplayLogic {
     router.viewController     = viewController
   }
   
-  // MARK: Routing
-  
-  
-  
   // MARK: View lifecycle
   
   override func viewDidLoad() {
@@ -52,6 +48,7 @@ class SearchViewController: UIViewController, SearchDisplayLogic {
     setup()
     setupTableView()
     setupSearchBar()
+    searchBar(searchController.searchBar, textDidChange: "billie")
   }
   
   private func setupSearchBar() {
