@@ -10,7 +10,7 @@ import UIKit
 import SDWebImage
 import AVKit
 
-class TrackDetailView: UIView {
+final class TrackDetailView: UIView {
   @IBOutlet weak var trackImageView: UIImageView!
   @IBOutlet weak var currentTimeSlider: UISlider!
   @IBOutlet weak var currentTimeLabel: UILabel!
@@ -77,7 +77,16 @@ class TrackDetailView: UIView {
       let durationTime = self?.player.currentItem?.duration
       let currentDurationText = ((durationTime ?? CMTimeMake(value: 1, timescale: 1)) - time).toDisplayString()
       self?.durationLabel.text = "-\(currentDurationText)"
+      self?.updateCurrentTimeSlider()
     }
+  }
+  
+  // Определил положение слайдера по текущему времени
+  private func updateCurrentTimeSlider() {
+    let currentTimeSeconds = CMTimeGetSeconds(player.currentTime())
+    let durationSeconds = CMTimeGetSeconds(player.currentItem?.duration ?? CMTimeMake(value: 1, timescale: 1))
+    let percentage = currentTimeSeconds / durationSeconds
+    self.currentTimeSlider.value = Float(percentage)
   }
   
   // MARK: - Animation
@@ -99,8 +108,15 @@ class TrackDetailView: UIView {
     self.removeFromSuperview()
   }
   @IBAction func handleCurrentTimeSlider(_ sender: Any) {
+    let percentage = currentTimeSlider.value
+    guard let duration = player.currentItem?.duration else { return }
+    let durationInSeconds = CMTimeGetSeconds(duration)
+    let seekTimeInSeconds = Float64(percentage) * durationInSeconds
+    let seekTime = CMTimeMakeWithSeconds(seekTimeInSeconds, preferredTimescale: 1)
+    player.seek(to: seekTime)
   }
   @IBAction func handleVolumeSlider(_ sender: Any) {
+    player.volume = volumeSlider.value
   }
   @IBAction func previousTrack(_ sender: Any) {
   }
