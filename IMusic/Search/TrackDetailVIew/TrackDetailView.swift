@@ -35,6 +35,7 @@ final class TrackDetailView: UIView {
   }()
   
   weak var delegate: TrackMovingDelegate?
+  weak var tabBarDelegate: MainTabBarControllerDelegate?
   
   // MARK: - ViewController
   override func awakeFromNib() {
@@ -112,8 +113,10 @@ final class TrackDetailView: UIView {
   
   // MARK: - @IBActions
   @IBAction func dragDownButtonTapped(_ sender: Any) {
-    self.removeFromSuperview()
+    self.tabBarDelegate?.minimizeTrackDetailController()
+//    self.removeFromSuperview()
   }
+  
   @IBAction func handleCurrentTimeSlider(_ sender: Any) {
     let percentage = currentTimeSlider.value
     guard let duration = player.currentItem?.duration else { return }
@@ -122,19 +125,23 @@ final class TrackDetailView: UIView {
     let seekTime = CMTimeMakeWithSeconds(seekTimeInSeconds, preferredTimescale: 1)
     player.seek(to: seekTime)
   }
+  
   @IBAction func handleVolumeSlider(_ sender: Any) {
     player.volume = volumeSlider.value
   }
+  
   @IBAction func previousTrack(_ sender: Any) {
     let cellViewModel = delegate?.moveBackForPreviousTrack()
     guard let cellInfo = cellViewModel else { return }
     self.set(viewModel: cellInfo)
   }
+  
   @IBAction func nextTrack(_ sender: Any) {
     let cellViewModel = delegate?.moveForwardToNextTrack()
     guard let cellInfo = cellViewModel else { return }
     self.set(viewModel: cellInfo)
   }
+  
   @IBAction func playPauseAction(_ sender: Any) {
     if player.timeControlStatus == .paused {
       player.play()
