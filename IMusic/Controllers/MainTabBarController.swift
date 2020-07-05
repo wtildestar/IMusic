@@ -9,12 +9,14 @@
 import UIKit
 
 protocol MainTabBarControllerDelegate: AnyObject {
-    func minimizeTrackDetailController()
+  func minimizeTrackDetailController()
+  func maximizedTrackDetailController(viewModel: SearchViewModel.Cell?)
 }
 
 final class MainTabBarController: UITabBarController {
   
   private let searchViewController: SearchViewController = SearchViewController.loadFromStoryboard()
+  let trackDetailView: TrackDetailView = TrackDetailView.loadFromNib()
   
   private var minimizedTopAnchorConstraint: NSLayoutConstraint!
   private var maximizedTopAnchorConstraint: NSLayoutConstraint!
@@ -26,6 +28,8 @@ final class MainTabBarController: UITabBarController {
     tabBar.tintColor = UIColor(red: 255/255, green: 0/255, blue: 96/255, alpha: 1.0)
     
     setupTrackDetailView()
+    
+    searchViewController.tabBarDelegate = self
     
     viewControllers = [
       generateViewController(rootViewController: searchViewController, image: UIImage(named: "search")!, title: "Search"),
@@ -42,15 +46,12 @@ final class MainTabBarController: UITabBarController {
   }
   
   private func setupTrackDetailView() {
-    print("Настройка trackDetailView")
-    let trackDetailView: TrackDetailView = TrackDetailView.loadFromNib()
-    trackDetailView.backgroundColor = .green
     trackDetailView.tabBarDelegate = self
     trackDetailView.delegate = searchViewController
     view.insertSubview(trackDetailView, belowSubview: tabBar)
     
     trackDetailView.translatesAutoresizingMaskIntoConstraints = false
-    maximizedTopAnchorConstraint = trackDetailView.topAnchor.constraint(equalTo: view.topAnchor)
+    maximizedTopAnchorConstraint = trackDetailView.topAnchor.constraint(equalTo: view.topAnchor, constant: view.frame.height)
     minimizedTopAnchorConstraint = trackDetailView.topAnchor.constraint(equalTo: tabBar.topAnchor, constant: -64)
     bottomAnchorConstraint = trackDetailView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: view.frame.height)
     bottomAnchorConstraint.isActive = true
@@ -62,8 +63,28 @@ final class MainTabBarController: UITabBarController {
 }
 
 extension MainTabBarController: MainTabBarControllerDelegate {
-  func minimizeTrackDetailController() {
+  func maximizedTrackDetailController(viewModel: SearchViewModel.Cell?) {
+    maximizedTopAnchorConstraint.isActive = true
+    minimizedTopAnchorConstraint.isActive = false
+    maximizedTopAnchorConstraint.constant = 0
+    bottomAnchorConstraint.constant = 0
     
+    UIView.animate(withDuration: 0.5,
+                   delay: 0,
+                   usingSpringWithDamping: 0.7,
+                   initialSpringVelocity: 1,
+                   options: .curveEaseOut,
+                   animations: {
+                    self.view.layoutIfNeeded()
+                    self.tabBar.alpha = 0
+    },
+                   completion: nil)
+    
+    guard let viewModel = viewModel else { return }
+    self.trackDetailView.set(viewModel: viewModel)
+  }
+  
+  func minimizeTrackDetailController() {
     maximizedTopAnchorConstraint.isActive = false
     minimizedTopAnchorConstraint.isActive = true
     
@@ -74,6 +95,7 @@ extension MainTabBarController: MainTabBarControllerDelegate {
                    options: .curveEaseOut,
                    animations: {
                     self.view.layoutIfNeeded()
+                    self.tabBar.alpha = 1
     },
                    completion: nil)
   }
