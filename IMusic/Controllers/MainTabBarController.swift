@@ -77,6 +77,8 @@ extension MainTabBarController: MainTabBarControllerDelegate {
                    animations: {
                     self.view.layoutIfNeeded()
                     self.tabBar.alpha = 0
+                    self.trackDetailView.miniTrackView.alpha = 0
+                    self.trackDetailView.maximizedStackView.alpha = 1
     },
                    completion: nil)
     
@@ -86,6 +88,7 @@ extension MainTabBarController: MainTabBarControllerDelegate {
   
   func minimizeTrackDetailController() {
     maximizedTopAnchorConstraint.isActive = false
+    bottomAnchorConstraint.constant = view.frame.height
     minimizedTopAnchorConstraint.isActive = true
     
     UIView.animate(withDuration: 0.5,
@@ -96,6 +99,8 @@ extension MainTabBarController: MainTabBarControllerDelegate {
                    animations: {
                     self.view.layoutIfNeeded()
                     self.tabBar.alpha = 1
+                    self.trackDetailView.miniTrackView.alpha = 1
+                    self.trackDetailView.maximizedStackView.alpha = 0
     },
                    completion: nil)
   }

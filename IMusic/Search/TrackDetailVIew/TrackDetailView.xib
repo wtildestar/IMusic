@@ -13,6 +13,69 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NSq-V4-lBk">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                    <subviews>
+                        <view alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8zh-7S-gKE">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
+                            <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="GuV-WC-mL2"/>
+                            </constraints>
+                        </view>
+                        <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="mu4-HG-Wbw">
+                            <rect key="frame" x="8" y="8" width="359" height="48"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image" translatesAutoresizingMaskIntoConstraints="NO" id="XTx-dX-l8p">
+                                    <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="48" id="zzW-Ri-i1Q"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P6s-Yy-7wb">
+                                    <rect key="frame" x="64" y="0.0" width="171" height="48"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cEX-RW-p7W">
+                                    <rect key="frame" x="251" y="0.0" width="44" height="48"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="44" id="VaM-YM-6NQ"/>
+                                    </constraints>
+                                    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <state key="normal" image="pause"/>
+                                    <connections>
+                                        <action selector="playPauseAction:" destination="wjF-xq-AhE" eventType="touchUpInside" id="tiB-Jo-5Nn"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gys-qr-aDd">
+                                    <rect key="frame" x="311" y="0.0" width="48" height="48"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="48" id="UZD-ED-i0k"/>
+                                    </constraints>
+                                    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <state key="normal" image="Right"/>
+                                    <connections>
+                                        <action selector="nextTrack:" destination="wjF-xq-AhE" eventType="touchUpInside" id="oJ3-dr-jSP"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="mu4-HG-Wbw" secondAttribute="trailing" constant="8" id="0H8-zU-o7d"/>
+                        <constraint firstItem="mu4-HG-Wbw" firstAttribute="top" secondItem="NSq-V4-lBk" secondAttribute="top" constant="8" id="3OG-Jw-p0r"/>
+                        <constraint firstItem="8zh-7S-gKE" firstAttribute="leading" secondItem="NSq-V4-lBk" secondAttribute="leading" id="ACG-rf-gFQ"/>
+                        <constraint firstAttribute="bottom" secondItem="mu4-HG-Wbw" secondAttribute="bottom" constant="8" id="U0z-i9-q66"/>
+                        <constraint firstAttribute="trailing" secondItem="8zh-7S-gKE" secondAttribute="trailing" id="lb3-at-cD5"/>
+                        <constraint firstItem="8zh-7S-gKE" firstAttribute="top" secondItem="NSq-V4-lBk" secondAttribute="top" id="qkb-cE-Hae"/>
+                        <constraint firstAttribute="height" constant="64" id="rng-f7-8Wb"/>
+                        <constraint firstItem="mu4-HG-Wbw" firstAttribute="leading" secondItem="NSq-V4-lBk" secondAttribute="leading" constant="8" id="tDM-4b-k1E"/>
+                    </constraints>
+                </view>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="V7z-Xk-9Gi">
                     <rect key="frame" x="30" y="0.0" width="315" height="637"/>
                     <subviews>
@@ -136,6 +199,9 @@
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
+                <constraint firstItem="rKz-sm-1Fv" firstAttribute="trailing" secondItem="NSq-V4-lBk" secondAttribute="trailing" id="1Pm-8G-Yih"/>
+                <constraint firstItem="NSq-V4-lBk" firstAttribute="top" secondItem="rKz-sm-1Fv" secondAttribute="top" id="6T6-Xy-P3O"/>
+                <constraint firstItem="NSq-V4-lBk" firstAttribute="leading" secondItem="rKz-sm-1Fv" secondAttribute="leading" id="PxO-GT-6Ru"/>
                 <constraint firstItem="V7z-Xk-9Gi" firstAttribute="top" secondItem="rKz-sm-1Fv" secondAttribute="top" id="T1Z-Rk-GJn"/>
                 <constraint firstItem="rKz-sm-1Fv" firstAttribute="bottom" secondItem="V7z-Xk-9Gi" secondAttribute="bottom" constant="30" id="gKc-Sa-pTC"/>
                 <constraint firstItem="rKz-sm-1Fv" firstAttribute="trailing" secondItem="V7z-Xk-9Gi" secondAttribute="trailing" constant="30" id="iNb-hs-mL1"/>
@@ -147,12 +213,18 @@
                 <outlet property="currentTimeLabel" destination="ZzG-gq-3O0" id="kC0-WC-qtw"/>
                 <outlet property="currentTimeSlider" destination="Ceq-9a-BYX" id="0fk-ef-uVx"/>
                 <outlet property="durationLabel" destination="MnO-b4-NRT" id="fOf-BR-37A"/>
+                <outlet property="maximizedStackView" destination="V7z-Xk-9Gi" id="prm-Qc-cZ2"/>
+                <outlet property="miniGoForwardButton" destination="Gys-qr-aDd" id="O3n-BT-uv6"/>
+                <outlet property="miniPlayPauseButton" destination="cEX-RW-p7W" id="Pwj-9S-MiJ"/>
+                <outlet property="miniTrackImageView" destination="XTx-dX-l8p" id="fAw-1J-NXY"/>
+                <outlet property="miniTrackTitleLabel" destination="P6s-Yy-7wb" id="98Z-RN-iMJ"/>
+                <outlet property="miniTrackView" destination="NSq-V4-lBk" id="N1S-e1-iyI"/>
                 <outlet property="playPauseButton" destination="MLS-nk-keC" id="G22-E3-ChR"/>
                 <outlet property="trackImageView" destination="GQn-zp-uyz" id="yom-Qv-1PC"/>
                 <outlet property="trackTitleLabel" destination="O1h-q0-hjN" id="YWJ-cA-6UM"/>
                 <outlet property="volumeSlider" destination="VkS-ie-No1" id="Z1Z-ew-feL"/>
             </connections>
-            <point key="canvasLocation" x="178" y="126"/>
+            <point key="canvasLocation" x="176.80000000000001" y="125.4872563718141"/>
         </view>
     </objects>
     <resources>
@@ -161,6 +233,7 @@
         <image name="IconMax" width="17" height="17"/>
         <image name="Left" width="34" height="20"/>
         <image name="Right" width="34" height="20"/>
+        <image name="image" width="81.5" height="81.5"/>
         <image name="pause" width="57" height="57"/>
     </resources>
 </document>
